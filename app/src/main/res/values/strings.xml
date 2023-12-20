@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pokedex</string>
+    <string name="pokedex">Pokedex</string>
+    <string name="what_pokemon_are_you_looking_for">What Pokemon are you looking for?</string>
+    <string name="pokeball">pokeball</string>
+</resources>
