@@ -17,7 +17,7 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var userName: String = ""
-    private val pokemonList = mutableListOf<PokemonDataView>()
+    val pokemonList = mutableListOf<PokemonDataView>()
 
     private val _pokemonLiveData = MutableLiveData<List<PokemonDataView>>()
     val pokemonLiveData: LiveData<List<PokemonDataView>>

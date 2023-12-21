@@ -2,6 +2,7 @@ package com.well.testpokemonapp.presentation.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.well.testpokemonapp.R
@@ -30,6 +31,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
         super.onCreate(savedInstanceState)
 
         initRecyclerView()
+        initSearchBarView()
         observeViewModel()
         viewModel.getPokemon()
     }
@@ -63,7 +65,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
     }
 
     private fun navigateToDetail(data: PokemonDataView) {
-        showSnackbar(data.name ?: "")
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("userName", data.name)
         startActivity(intent)
@@ -81,4 +82,30 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
             Snackbar.LENGTH_SHORT
         )
         snackbar.show()
-    }}
+    }
+
+    private fun initSearchBarView() {
+        viewBinding?.searchBar?.apply {
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != "") filterData(newText ?: "")
+                    else submitList(viewModel.pokemonList)
+                    return false
+                }
+            })
+            queryHint = "Search..."
+        }
+    }
+
+    private fun filterData(query: String) {
+       val filteredList = viewModel.pokemonList.filter {
+           it.name?.contains(query, ignoreCase = true) == true
+       }
+        adapter?.setItemsAnimateChanges(filteredList)
+    }
+
+}
