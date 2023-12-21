@@ -49,7 +49,7 @@ class DetailViewModel @Inject constructor(
 
     private fun getPokemonDetailParam(): GetPokemonDetailParam {
         return GetPokemonDetailParam(
-            name = name?.get() ?: ""
+            name = name.get() ?: ""
         )
     }
 
