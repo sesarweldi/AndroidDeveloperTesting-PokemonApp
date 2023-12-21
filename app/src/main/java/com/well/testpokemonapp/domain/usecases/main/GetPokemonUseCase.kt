@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 class GetPokemonUseCase @Inject constructor(
     private val repository: Repository
-): UseCase<PokemonEntity, NoParams>() {
+): UseCase<List<PokemonEntity>, NoParams>() {
 
-    override suspend fun executeOnBackground(param: NoParams): PokemonEntity {
+    override suspend fun executeOnBackground(param: NoParams): List<PokemonEntity> {
         return repository.getPokemon()
     }
 

@@ -7,12 +7,10 @@ import com.well.testpokemonapp.domain.entity.PokemonEntity
 
 object DataMapper {
 
-    fun PokemonResponseModel.toPokemonEntity(): PokemonEntity {
-        return PokemonEntity(
-            pokemonList = this.results.map {
-                it.name ?: ""
-            }
-        )
+    fun PokemonResponseModel.toPokemonEntity(): List<PokemonEntity> {
+        return results.map {
+            PokemonEntity(name = it.name ?: "")
+        }
     }
 
     fun PokemonDetailResponseModel.toPokemonDetailEntity(): PokemonDetailEntity {

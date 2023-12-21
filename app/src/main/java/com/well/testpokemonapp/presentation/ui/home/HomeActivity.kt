@@ -43,8 +43,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
 
     private fun submitList(list: List<PokemonDataView>?) {
         list?.let {
-            val sortedData = list.sortedBy { it.name }
-            adapter?.setItemsAnimateChanges(sortedData)
+            adapter?.setItemsAnimateChanges(list)
         }
     }
 

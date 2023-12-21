@@ -1,5 +1,6 @@
 package com.well.testpokemonapp.data.api
 
+import com.well.testpokemonapp.data.DataConstant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,7 +10,7 @@ import java.util.concurrent.TimeUnit
 object ApiHelper {
 
     fun retrofitClient(
-        url: String = ApiUrlConstant.BASE_URL,
+        url: String = DataConstant.BASE_URL,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)
