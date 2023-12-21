@@ -3,4 +3,6 @@
     <string name="pokedex">Pokedex</string>
     <string name="what_pokemon_are_you_looking_for">What Pokemon are you looking for?</string>
     <string name="pokeball">pokeball</string>
+    <string name="height">Height</string>
+    <string name="Weight">Weight</string>
 </resources>

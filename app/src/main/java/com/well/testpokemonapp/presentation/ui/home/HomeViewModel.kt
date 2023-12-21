@@ -16,7 +16,6 @@ class HomeViewModel @Inject constructor(
     private val getPokemonUseCase: GetPokemonUseCase
 ) : ViewModel() {
 
-    private var userName: String = ""
     val pokemonList = mutableListOf<PokemonDataView>()
 
     private val _pokemonLiveData = MutableLiveData<List<PokemonDataView>>()
@@ -32,13 +31,13 @@ class HomeViewModel @Inject constructor(
         get() = _clickPokemonItemEventLiveData
 
     fun getPokemon() {
-        executeGetUserSearchUseCase()
+        executeGetPokemonUseCase()
     }
 
-    private fun executeGetUserSearchUseCase() {
+    private fun executeGetPokemonUseCase() {
         getPokemonUseCase.execute(
             ::onGetPokemonSuccess,
-            ::onGetUserSearchFailed,
+            ::onGetPokemonFailed,
             NoParams()
         )
     }
@@ -65,7 +64,7 @@ class HomeViewModel @Inject constructor(
         _pokemonLiveData.postValue(pokemonList)
     }
 
-    private fun onGetUserSearchFailed(throwable: Throwable) {
+    private fun onGetPokemonFailed(throwable: Throwable) {
         _pokemonErrorLiveData.postValue(throwable)
     }
 

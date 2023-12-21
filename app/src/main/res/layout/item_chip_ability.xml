@@ -3,39 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="data"
-            type="com.well.testpokemonapp.presentation.model.PokemonDataView" />
-
-    </data>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/container"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_8"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
         android:elevation="12dp"
         android:outlineSpotShadowColor="@color/black"
-        app:cardCornerRadius="24dp"
+        app:cardCornerRadius="28dp"
         app:cardElevation="8dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/dp_24">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_28"
+            android:paddingVertical="@dimen/dp_16">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_bold"
-                android:text="@{data.name}"
-                android:textSize="20sp"
-                tools:text="Pokemon" />
+                android:textSize="16sp"
+                tools:text="Lighting" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

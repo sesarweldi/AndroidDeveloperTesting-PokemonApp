@@ -7,6 +7,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 
 
 abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : androidx.lifecycle.ViewModel> :
@@ -36,6 +37,15 @@ abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : androidx.
 
     fun <T> LiveData<T>.observe(observer: Observer<in T>) {
         observe(this@BaseActivity, observer)
+    }
+
+    fun showSnackbar(message: String) {
+        val snackbar = Snackbar.make(
+            findViewById(android.R.id.content),
+            message,
+            Snackbar.LENGTH_SHORT
+        )
+        snackbar.show()
     }
 
 }

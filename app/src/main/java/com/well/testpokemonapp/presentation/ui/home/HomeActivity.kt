@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.well.testpokemonapp.R
 import com.well.testpokemonapp.databinding.ActivityHomeBinding
 import com.well.testpokemonapp.presentation.adapter.main.PokemonListAdapter
@@ -50,7 +49,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
     }
 
     private fun initRecyclerView() {
-        viewBinding?.rvSearchUser?.let { rv ->
+        viewBinding?.rvHome?.let { rv ->
             recyclerViewLayoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             adapter = PokemonListAdapter(this)
@@ -66,22 +65,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
 
     private fun navigateToDetail(data: PokemonDataView) {
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("userName", data.name)
+        intent.putExtra("name", data.name)
         startActivity(intent)
     }
 
 
     private fun onGetPokemonError(throwable: Throwable) {
         showSnackbar(throwable.message.toString())
-    }
-
-    private fun showSnackbar(message: String) {
-        val snackbar = Snackbar.make(
-            findViewById(android.R.id.content),
-            message,
-            Snackbar.LENGTH_SHORT
-        )
-        snackbar.show()
     }
 
     private fun initSearchBarView() {

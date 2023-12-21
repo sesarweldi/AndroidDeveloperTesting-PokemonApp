@@ -1,6 +1,7 @@
 package com.well.testpokemonapp.di
 
 import com.well.testpokemonapp.domain.repository.Repository
+import com.well.testpokemonapp.domain.usecases.main.GetPokemonDetailUseCase
 import com.well.testpokemonapp.domain.usecases.main.GetPokemonUseCase
 import dagger.Module
 import dagger.Provides
@@ -16,5 +17,10 @@ class UseCaseModule {
         repository: Repository
     ): GetPokemonUseCase {
         return GetPokemonUseCase(repository)
+    }
+
+    @Provides
+    fun provideDetailUseCase(repository: Repository): GetPokemonDetailUseCase {
+        return GetPokemonDetailUseCase(repository)
     }
 }
