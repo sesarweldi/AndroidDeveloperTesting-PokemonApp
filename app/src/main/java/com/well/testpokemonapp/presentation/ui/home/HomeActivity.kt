@@ -94,7 +94,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), Pokemon
        val filteredList = viewModel.pokemonList.filter {
            it.name?.contains(query, ignoreCase = true) == true
        }
-        adapter?.setItemsAnimateChanges(filteredList)
+        val sortedList = filteredList.sortedBy {
+            it.name
+        }
+        adapter?.setItemsAnimateChanges(sortedList)
     }
 
 }
